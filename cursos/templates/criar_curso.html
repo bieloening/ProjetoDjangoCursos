@@ -15,10 +15,10 @@
         <form action="/curso/criar_curso/" method="POST"> {% csrf_token %}
 
             <label for="">Nome do Curso</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" name="nome">
 
             <label for="">Carga horária</label>
-            <input type="number" class="form-control">
+            <input type="number" class="form-control" name="carga_horaria">
 
             <input type="submit" value="Enviar">
 

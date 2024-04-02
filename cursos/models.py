@@ -6,3 +6,5 @@ class  Curso(models.Model):
     data_criacao = models.DateTimeField()
     ativo = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.nome

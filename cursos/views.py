@@ -6,11 +6,15 @@ from datetime import datetime
 # Create your views here.
 def listar_cursos(request):
     nome_filtrar = request.GET.get('nome_filtrar')
+    carga_horaria_filtrar = request.GET.get('carga_horaria')
+    
+    cursos = Curso.objects.all()
     
     if nome_filtrar:
-        cursos = Curso.objects.filter(nome__contains=nome_filtrar)
-    else:
-        cursos = Curso.objects.all()
+        cursos = cursos.filter(nome__contains=nome_filtrar)
+        
+    if carga_horaria_filtrar:
+        cursos = cursos.filter(carga_horaria__gte=carga_horaria_filtrar)
     
     return render(request, 'listar_cursos.html', {'cursos': cursos})
 
@@ -34,3 +38,7 @@ def criar_curso(request):
         curso.save()
         return redirect('/curso/criar_curso/?status=1' )
     
+def ver_curso(request, id):
+    curso = Curso.objects.get(id=id)
+    print(curso)
+    return render(request, 'ver_curso.html', {'curso': curso})

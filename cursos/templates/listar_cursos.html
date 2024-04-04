@@ -31,9 +31,11 @@
       <h2>Listando os cursos:</h2>
       <br>
       {% for i in cursos %}
+        {% if i.ativo %}
         <h5>Nome: <a href="/curso/ver_curso/{{i.id}}">{{i.nome}}</a></h5>
         <h6>Carga horária: {{i.carga_horaria}}</h6>
         <hr>
+        {% endif %}
       {% endfor %}
 
     </div>

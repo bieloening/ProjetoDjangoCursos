@@ -4,6 +4,9 @@ from .models import Curso
 from datetime import datetime
 
 # Create your views here.
+def pagina_inicial(request):
+    return render(request, 'home.html')
+
 def listar_cursos(request):
     nome_filtrar = request.GET.get('nome_filtrar')
     carga_horaria_filtrar = request.GET.get('carga_horaria')

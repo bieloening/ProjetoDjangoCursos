@@ -4,7 +4,7 @@ from .models import Curso
 from datetime import datetime
 
 # Create your views here.
-def pagina_inicial(request):
+def home(request):
     return render(request, 'home.html')
 
 def listar_cursos(request):

@@ -39,7 +39,7 @@ def criar_curso(request):
         )
         
         curso.save()
-        return redirect('/curso/criar_curso/?status=1' )
+        return redirect('/criar_curso/?status=1' )
     
 def ver_curso(request, id):
     curso = Curso.objects.get(id=id)
@@ -50,4 +50,4 @@ def deletar_curso(request, id):
     curso = Curso.objects.get(id=id)
     curso.ativo = False
     curso.save()
-    return redirect('/curso/listar_cursos')
+    return redirect('/listar_cursos')

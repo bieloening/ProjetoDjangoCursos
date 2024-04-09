@@ -123,8 +123,6 @@ STATICFILES_DIRS = [
     os.path.join(BASE_DIR, 'cursos/static'),
 ]
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
-
 # Media files (Uploaded files)
 # https://docs.djangoproject.com/en/5.0/topics/files/
 

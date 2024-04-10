@@ -5,7 +5,11 @@ from datetime import datetime
 
 # Create your views here.
 def home(request):
-    return render(request, 'home.html')
+    # Obtém os cursos em destaque
+    cursos_destaque = Curso.objects.all()[:3]  # Suponha que você deseja exibir apenas os primeiros 3 cursos em destaque
+
+    # Renderiza o template 'home.html' e passa os cursos em destaque como contexto
+    return render(request, 'home.html', {'cursos_destaque': cursos_destaque})
 
 def listar_cursos(request):
     nome_filtrar = request.GET.get('nome_filtrar')
@@ -30,14 +34,14 @@ def criar_curso(request):
     elif request.method == "POST":
         nome_digitado= request.POST.get('nome')
         carga_horaria_digitado = request.POST.get('carga_horaria')
+        descricao_digitado = request.POST.get('descricao')
         
         curso = Curso(
             nome = nome_digitado,
             carga_horaria = carga_horaria_digitado,
+            descricao = descricao_digitado,
             data_criacao=datetime.now()
-            
         )
-        
         curso.save()
         return redirect('/criar_curso/?status=1' )
     

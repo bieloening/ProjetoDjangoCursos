@@ -11,14 +11,14 @@
 <body>
     <div class="container">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <div class="container-fluid">
-                    <a class="navbar-brand" href="#">Seu Site</a>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-3 py-3">
+                <div class="container">
+                    <a class="navbar-brand fs-3 text-primary me-auto" href="#">Aprenda mais com BIEL</a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
                     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
                             <li class="nav-item">
                                 <a class="nav-link active" aria-current="page" href="#">Home</a>
                             </li>
@@ -31,13 +31,16 @@
                             <li class="nav-item">
                                 <a class="nav-link" href="#">Contato</a>
                             </li>
+                        </ul>
+                        <ul class="navbar-nav mb-2 mb-lg-0 fs-5">
                             <li class="nav-item">
-                                <a class="nav-link" href="{% url 'criar_curso' %}">Criar Curso</a>
+                                <a class="btn btn-primary" href="{% url 'criar_curso' %}">Criar Curso</a>
                             </li>
                         </ul>
                     </div>
                 </div>
             </nav>
+            
         </header>
 
         <section id="banner">
@@ -53,14 +56,18 @@
         <section id="cursos-destaque">
             <div class="row mt-5">
                 <div class="col-md-12 text-center">
-                    <h2>Cursos em Destaque</h2>
+                    <h2>Nossos Cursos</h2>
                 </div>
             </div>
             <div class="row mt-3">
-                {% for curso in cursos %}
+                {% for curso in cursos_destaque %}
                 <div class="col-md-4">
                     <div class="card">
-                        <img src="{{ curso.imagem.url }}" class="card-img-top" alt="...">
+                        {% if curso.imagem %}
+                            <img src="{{ curso.imagem.url }}" class="card-img-top" alt="{{ curso.nome }}">
+                        {% else %}
+                            <p>Imagem não disponível</p>
+                        {% endif %}
                         <div class="card-body">
                             <h5 class="card-title">{{ curso.nome }}</h5>
                             <p class="card-text">{{ curso.descricao }}</p>
@@ -68,7 +75,7 @@
                         </div>
                     </div>
                 </div>
-                {% endfor %}
+            {% endfor %}
             </div>
         </section>
         

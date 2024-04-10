@@ -5,7 +5,7 @@ class Curso(models.Model):
     carga_horaria = models.IntegerField()
     data_criacao = models.DateTimeField()
     ativo = models.BooleanField(default=True)
-    imagem = models.ImageField(upload_to='images/')
+    imagem = models.ImageField(upload_to='images/', null=True)
     descricao = models.TextField(blank=True, null=True)
 
     def __str__(self):

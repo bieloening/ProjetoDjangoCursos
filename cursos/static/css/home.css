@@ -1,3 +1,74 @@
-/* Estilos para o cabeçalho */
+.card-description {
+    overflow: hidden; /* Esconde qualquer conteúdo que ultrapasse a altura máxima */
+    max-height: 0; /* Inicialmente, a descrição está escondida */
+    transition: max-height 0.5s ease; /* Adiciona uma transição suave */
+}
+
+.card:hover .card-description {
+    max-height: 200px; /* Define a altura máxima da descrição quando o mouse passar sobre o card */
+}
+
+.card-img-top {
+    height: 200px; /* Defina a altura desejada */
+    object-fit: cover; /* Garante que a imagem cubra o espaço designado sem distorção */
+}
+
+
+#navbarNavDropdown {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* -------------- Animação Dropdown ------------ */
+
+@media (min-width: 768px) {
+    .animate {
+      animation-duration: 0.3s;
+      -webkit-animation-duration: 0.3s;
+      animation-fill-mode: both;
+      -webkit-animation-fill-mode: both;
+    }
+  }
+  
+  @keyframes slideIn {
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  
+    100% {
+      transform: translateY(0rem);
+      opacity: 1;
+    }
+  
+    0% {
+      transform: translateY(1rem);
+      opacity: 0;
+    }
+  }
+  
+  @-webkit-keyframes slideIn {
+    0% {
+      -webkit-transform: transform;
+      -webkit-opacity: 0;
+    }
+  
+    100% {
+      -webkit-transform: translateY(0);
+      -webkit-opacity: 1;
+    }
+  
+    0% {
+      -webkit-transform: translateY(1rem);
+      -webkit-opacity: 0;
+    }
+  }
+  
+  .slideIn {
+    -webkit-animation-name: slideIn;
+    animation-name: slideIn;
+  }
+
+
 
 

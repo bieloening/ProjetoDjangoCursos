@@ -9,37 +9,44 @@
     <link rel="stylesheet" type="text/css" href="{% static 'css/home.css' %}">
 </head>
 <body>
-    <div class="container">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light rounded-3 py-3">
-                <div class="container">
-                    <a class="navbar-brand fs-3 text-primary me-auto" href="#">Aprenda mais com BIEL</a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav mx-auto mb-2 mb-lg-0 fs-5">
-                            <li class="nav-item">
-                                <a class="nav-link active" aria-current="page" href="#">Home</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Sobre</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Cursos</a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">Contato</a>
-                            </li>
+            <nav class="navbar navbar-expand-lg navbar-dark bg-dark" style="width: 100%;">
+                <div class="container-fluid">
+                  <a class="navbar-brand" href="#">
+                    <img src="/media/images/ada-removebg-preview.png" alt="" width="80" height="80" class="d-inl">
+                  </a>
+                  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                  </button>
+                  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                    <ul class="navbar-nav animate slideIn">
+                      <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                      </li>
+                      <li class="nav-item">
+                        <a class="nav-link" href="{% url 'criar_curso' %}">Criar Curso</a>
+                      </li>
+                      <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                          Dropdown link
+                        </a>
+                        <ul class="dropdown-menu  animate slideIn"  aria-labelledby="navbarDropdownMenuLink">
+                          <li><a class="dropdown-item" href="#">Action</a></li>
+                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                          <li><a class="dropdown-item" href="#">Something else here</a></li>
                         </ul>
-                        <ul class="navbar-nav mb-2 mb-lg-0 fs-5">
-                            <li class="nav-item">
-                                <a class="btn btn-primary" href="{% url 'criar_curso' %}">Criar Curso</a>
-                            </li>
-                        </ul>
-                    </div>
+                      </li>
+                    </ul>
+                        <form class="d-flex">
+                            <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                            <button class="btn btn-outline-success" type="submit">Search</button>
+                        </form>
+                  </div>
                 </div>
-            </nav>
+              </nav>
             
         </header>
 
@@ -53,31 +60,33 @@
             </div>
         </section>
 
-        <section id="cursos-destaque">
-            <div class="row mt-5">
-                <div class="col-md-12 text-center">
-                    <h2>Nossos Cursos</h2>
-                </div>
-            </div>
-            <div class="row mt-3">
-                {% for curso in cursos_destaque %}
-                <div class="col-md-4">
-                    <div class="card">
-                        {% if curso.imagem %}
-                            <img src="{{ curso.imagem.url }}" class="card-img-top" alt="{{ curso.nome }}">
-                        {% else %}
-                            <p>Imagem não disponível</p>
-                        {% endif %}
-                        <div class="card-body">
-                            <h5 class="card-title">{{ curso.nome }}</h5>
-                            <p class="card-text">{{ curso.descricao }}</p>
-                            <a href="#" class="btn btn-primary">Detalhes</a>
-                        </div>
+        <div class="container">
+            <section id="cursos-destaque">
+                <div class="row mt-5">
+                    <div class="col-md-12 text-center">
+                        <h2>Nossos Cursos</h2>
                     </div>
                 </div>
-            {% endfor %}
-            </div>
-        </section>
+                <div class="row mt-3">
+                    {% for curso in cursos_destaque %}
+                    <div class="col-md-4">
+                        <div class="card">
+                            {% if curso.imagem %}
+                                <img src="{{ curso.imagem.url }}" class="card-img-top" alt="{{ curso.nome }}">
+                            {% else %}
+                                <p>Imagem não disponível</p>
+                            {% endif %}
+                            <div class="card-body">
+                                <h5 class="card-title">{{ curso.nome }}</h5>
+                                <p class="card-text card-description">{{ curso.descricao }}</p>
+                                <a href="#" class="btn btn-primary">Detalhes</a>
+                            </div>
+                        </div>
+                    </div>
+                {% endfor %}
+                </div>
+            </section>
+        </div>
         
 
         <!-- Sobre Nós -->
@@ -127,7 +136,6 @@
                 </div>
             </div>
         </footer>
-    </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
 </body>

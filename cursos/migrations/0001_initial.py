@@ -19,6 +19,8 @@ class Migration(migrations.Migration):
                 ('carga_horaria', models.IntegerField()),
                 ('data_criacao', models.DateTimeField()),
                 ('ativo', models.BooleanField(default=True)),
+                ('imagem', models.ImageField(upload_to='cursos')),
+                ('descricao', models.CharField())
             ],
         ),
     ]
